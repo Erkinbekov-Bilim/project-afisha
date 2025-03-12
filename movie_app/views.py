@@ -67,3 +67,9 @@ def review_detail_api_view(request, id):
   
   data = ReviewDetailSerializer(instance = review).data
   return Response(data, status=status.HTTP_200_OK)
+
+@api_view(['GET'])
+def movie_reviews_api_view(request):
+  reviews = Movie.objects.all()
+  data = MovieDetailSerializer(reviews, many=True).data
+  return Response(data, status=status.HTTP_200_OK)
