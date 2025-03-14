@@ -28,7 +28,7 @@ class DirectorDetailSerializer(serializers.ModelSerializer):
 class ReviewSerializer(serializers.ModelSerializer):
   class Meta:
     model = Review
-    fields = 'text stars'.split()
+    fields = 'id text stars'.split()
     
 class ReviewDetailSerializer(serializers.ModelSerializer):
   
