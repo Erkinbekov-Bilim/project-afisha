@@ -61,7 +61,7 @@ class MovieSerializer(serializers.ModelSerializer):
 class ReviewValidationSerializer(serializers.Serializer):
     text = serializers.CharField(max_length=100, min_length=5)
     stars = serializers.IntegerField(min_value=1, max_value=5)
-    movie_id = serializers.IntegerField(min_value=1)
+    movie_id = serializers.IntegerField(min_value=1, required=False)
     
     def validate_movie_id(self, movie_id):
       print("movie_id", movie_id)
@@ -81,7 +81,7 @@ class MovieValidationSerializer(serializers.Serializer):
   description = serializers.CharField(max_length=500, min_length=5)
   duration = serializers.IntegerField(min_value=1, max_value=500)
   director_id = serializers.IntegerField(min_value=1)
-  reviews = serializers.ListField(child=ReviewValidationSerializer())
+  reviews = serializers.ListField(child=ReviewValidationSerializer(), required=False)
   
   def validate_director_id(self, director_id):
     try: 
